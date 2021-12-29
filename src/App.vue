@@ -5,7 +5,7 @@
 <input list="moedas" name="lista"/>
 <datalist id="moedas">
   
-<option v-for="moeda of moedas" v-bind:key="moeda.id">{{moedas.name}}</option>
+<option v-for="moeda of moedas" v-bind:key="moeda.id">{{moedas.data}}</option>
 
 </datalist>
 </div>
@@ -26,7 +26,8 @@ export default {
       console.log(resposta.data.data)
       this.moedas = resposta.data
     })
-  },
+  },  
+
   name: "app",
 
 }
