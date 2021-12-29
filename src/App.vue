@@ -1,16 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+<div id="app">
+  
+<h2>De:</h2>
+<input list="moedas" name="lista"/>
+<datalist id="moedas">
+  
+<option v-for="moeda of moedas" v-bind:key="moeda.id">{{moedas.name}}</option>
+
+</datalist>
+</div>
+</template> 
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Moedas from './services/moedas'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+
+  data(){
+    return{
+      moedas:[],
+    }
+  },
+
+  mounted(){
+    Moedas.listar().then(resposta =>{
+      console.log(resposta.data.data)
+      this.moedas = resposta.data
+    })
+  },
+  name: "app",
+
 }
 </script>
 
